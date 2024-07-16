@@ -1,3 +1,3 @@
 # Product-Feedback-Management-Website
 
-This webiste mainly focous on gathering teh reviews of verified buyers and showcasing the reviews to the new buyers interested in specific product. Website is done on HTML& CSS enclosed in PHP with JS and for database Mysql is used  
+This website primarily focuses on collecting reviews from verified buyers and presenting them to prospective buyers interested in specific products. Website is done on HTML& CSS enclosed in PHP with JS and for database Mysql is used  
