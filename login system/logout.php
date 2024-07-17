@@ -6,6 +6,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header('location:/Reviews Viewing/index.php');
+header('location:../Reviews Viewing/index.php');
 
 ?>

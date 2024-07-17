@@ -19,10 +19,11 @@
                 <li><a href="/Main Home page/index.php">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Services</a></li>
-                <li><a href="/contact/index.php">Contact</a></li>
+                <li><a href="../contact/index.php">Contact</a></li>
+                <li><a href="../Reviews Viewing/index.php">All Reviews</a></li>
               </ul>
             <div class="navbar-signin">
-              <a href="/login system/login_form.php">Sign In</a>
+              <a href="../login system/login_form.php">Sign In</a>
             </div>
           </div>
 
@@ -31,8 +32,7 @@
         </div>
 
         <div class="products">
-            
-            <div class="product">
+            <div class="product" onclick="location.href='../Reviews Viewing/index.php?product=Earphone'">
                 <div class="image">
                     <img src="images/earphone.png" alt="">
                 </div>
@@ -51,7 +51,7 @@
                
             </div>
 
-            <div class="product">
+            <div class="product" onclick="location.href='../Reviews Viewing/index.php?product=Phone'">
                 <div class="image">
                     <img src="images/iphone2.png" alt="">
                 </div>
@@ -70,7 +70,7 @@
         
             </div>
 
-            <div class="product">
+            <div class="product" onclick="location.href='../Reviews Viewing/index.php?product=Laptop'">
                 <div class="image">
                     <img src="images/laptop.png" alt="">
                 </div>
@@ -89,7 +89,7 @@
              
             </div>
 
-            <div class="product">
+            <div class="product" onclick="location.href='../Reviews Viewing/index.php?product=Watch'">
                 <div class="image">
                     <img src="images/watch3.png" alt="">
                 </div>

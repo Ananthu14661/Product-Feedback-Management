@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
    $cpass = md5($_POST['cpassword']);
    $user_type = $_POST['user_type'];
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+   $select = " SELECT * FROM user_form WHERE email = '$email'";
 
    $result = mysqli_query($conn, $select);
 
@@ -23,9 +23,22 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $error[] = 'password not matched!';
       }else{
+         $pid = $_POST['pid'];
+         $insert = "select * from productid where id=$pid";
+        $result= mysqli_query($conn, $insert);
+       
+         if((mysqli_num_rows($result))>0)
+         {
          $insert = "INSERT INTO user_form(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
          mysqli_query($conn, $insert);
          header('location:login_form.php');
+         }
+      
+         else
+         {
+
+            echo "<script> alert('Product id does not exist'); </script>";
+         }
       }
    }
 
@@ -61,8 +74,9 @@ if(isset($_POST['submit'])){
       ?>
       <input type="text" name="name" required placeholder="enter your name">
       <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="password" name="cpassword" required placeholder="confirm your password">
+      <input type="password" minlength="6"  name="password" required placeholder="enter your password">
+      <input type="password" minlength="6" name="cpassword" required placeholder="confirm your password">
+      <input type="text" name="pid" required placeholder="Product Id">
       <select name="user_type">
          <option value="user">user</option>
          <option value="admin">admin</option>

@@ -15,17 +15,17 @@
     <div class="section__container">
       <div class="navbar">
         <div class="navbar-logo">
-          <img src="/Main Home page/images/reactlogo2.png" alt="Logo">
+          <img src="../Main Home page/images/reactlogo2.png" alt="Logo">
           <span>ATOM</span>
         </div>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="../Main Home Page/index.php">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="../Contact/index.php">Contact</a></li>
           </ul>
         <div class="navbar-signin">
-          <a href="\login system\login_form.php">Sign In</a>
+          <a href="..\login system\login_form.php">Sign In</a>
         </div>
     </div>
       <div class="header">
@@ -35,38 +35,50 @@
         <h1>What our customers say about us.</h1>
       </div>
       <div class="testimonials__grid">
-        <div class="card">
-          <span><i class="ri-double-quotes-l"></i></span>
+      <?php
+        $conn = mysqli_connect('localhost','root','','user_db');
+        $url= $_SERVER['REQUEST_URI'];  
+$url_components = parse_url($url);
+if(isset($url_components['query']))
+{
+parse_str($url_components['query'], $params);
+ if(isset($params['product']))
+ $linkparam=$params['product'];
+ $select = "select * from reviews where product='$linkparam'" ;
+ $result = mysqli_query($conn, $select);
+
+}
+else
+{
+ $select = "select * from reviews" ;
+ $result = mysqli_query($conn, $select);
+}
+ while($row=mysqli_fetch_assoc($result))
+ {
+  $review=$row['review'];
+  $name=$row['username'];
+  $product=$row['product'];
+  $brand=$row['brand'];
+  $model=$row['model'];
+?>
+  <div class="card">
+  <span><i class="ri-double-quotes-l"></i></span>
           <p>
-            I've been working with these guys for a long time and I can say that
-            my house is in the perfect hands.
-          </p>
-          <hr />
-        
-          <p class="name">Allan Collins</p>
-        </div>
-        <div class="card">
-          <span><i class="ri-double-quotes-l"></i></span>
-          <p>
-            Working with Sentry Oak is just great, every problem in my house is
-            solved in a matter of days.
+           <?php echo "$review"; ?>
           </p>
           <hr />
          
-          <p class="name">Clay Washington</p>
-        </div>
-        <div class="card">
-          <span><i class="ri-double-quotes-l"></i></span>
-          <p>
-            Once a pipe burst in my kitchen and an hour later it was already
-            repaired, thanks to Sentry Oak.
-          </p>
-          <hr />
-          
-          <p class="name">Tanya Grant</p>
-        </div>
-      </div>
-    
-    </div>
+          <p class="name"> <?php echo "By: $name"; ?></p>
+          <p class="name"> <?php echo "Product: $product"; ?></p>
+          <p class="name"> <?php echo "Brand: $brand"; ?></p>
+          <p class="name"> <?php echo "Model: $model"; ?></p>
+  
+  </div>
+<?php
+ }
+
+
+        ?>
+        
   </body>
 </html>
